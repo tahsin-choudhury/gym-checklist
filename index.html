@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gym Checklist</title>
+  <meta name="theme-color" content="#0b0f14">
+  <meta name="description" content="Personal 3-day gym workout checklist">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topbar">
+  <header class="app-header" id="app-header">
+    <div class="header-row">
+      <div class="header-titles">
+        <h1 id="view-title">Day 1</h1>
+        <p id="view-subtitle">Chest + Triceps</p>
+      </div>
+      <div class="progress-count" id="progress-count">0/12</div>
+    </div>
+    <div class="progress-track" id="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs" aria-label="Workout days"></nav>
+  </div>
+
+  <main id="view"></main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
