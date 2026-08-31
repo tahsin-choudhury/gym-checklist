@@ -67,10 +67,10 @@
     saveState();
   }
 
+  // Only exercises are checkable. The warm-up is reference text on the Notes tab.
   function dayItemKeys(day) {
-    var keys = [], i;
-    for (i = 0; i < WARMUP.length; i++) keys.push(itemKey(day.id, "w", i));
-    for (i = 0; i < day.exercises.length; i++) keys.push(itemKey(day.id, "e", i));
+    var keys = [];
+    for (var i = 0; i < day.exercises.length; i++) keys.push(itemKey(day.id, "e", i));
     return keys;
   }
 
@@ -174,15 +174,6 @@
   function renderDay(day) {
     viewEl.innerHTML = "";
 
-    var warmSection = el("section", "section");
-    warmSection.appendChild(el("h2", "section-title", "Warm-up"));
-    var warmList = el("div", "list");
-    WARMUP.forEach(function (item, i) {
-      warmList.appendChild(makeRow(day.id, "w", i, item));
-    });
-    warmSection.appendChild(warmList);
-    viewEl.appendChild(warmSection);
-
     var mainSection = el("section", "section");
     mainSection.appendChild(el("h2", "section-title", "Exercises"));
     var mainList = el("div", "list");
@@ -208,6 +199,22 @@
 
   function renderNotes() {
     viewEl.innerHTML = "";
+
+    // Warm-up lives here as reference text, the same for every day.
+    var warm = el("section", "section");
+    warm.appendChild(el("h2", "section-title", "Warm-up (every session)"));
+    var warmCard = el("div", "note");
+    var warmList = el("ul", "note-list");
+    WARMUP.forEach(function (item) {
+      var li = document.createElement("li");
+      li.appendChild(document.createTextNode(item.name));
+      if (item.sets) li.appendChild(el("span", "note-meta", " - " + item.sets));
+      warmList.appendChild(li);
+    });
+    warmCard.appendChild(warmList);
+    warm.appendChild(warmCard);
+    viewEl.appendChild(warm);
+
     NOTES.forEach(function (note) {
       var section = el("section", "section");
       section.appendChild(el("h2", "section-title", note.title));

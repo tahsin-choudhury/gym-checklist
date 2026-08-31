@@ -1,7 +1,7 @@
 # Gym Checklist
 
 A tiny installable PWA: 3-day workout split, tap-to-check rows, daily auto-reset,
-and a Notes tab for reference. No backend, no build step, no dependencies.
+and a Notes tab holding the warm-up and reference info. No backend, no build step, no dependencies.
 
 ## Files
 
@@ -32,7 +32,8 @@ show the app but the service worker and install prompt will not work.
 
 Everything is in `data.js`:
 
-- `WARMUP` — the shared warm-up list shown at the top of every day.
+- `WARMUP` — the shared warm-up, shown as reference at the top of the Notes tab.
+  It is not checkable and does not count toward a day's progress.
 - `DAYS` — one object per day. Tabs are generated from `tab`, so adding a fourth
   day object automatically adds a fourth tab.
 - `NOTES` — the reference sections on the Notes tab.

@@ -296,6 +296,8 @@ main { padding: 4px 12px 0; }
 }
 
 .note-list li { margin: 6px 0; }
+
+.note-meta { color: var(--accent); font-weight: 600; }
 .note-list li::marker { color: var(--accent); }
 
 .note-text + .note-list { margin-top: 10px; }

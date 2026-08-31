@@ -10,7 +10,7 @@
    Days: add/remove objects in DAYS; tabs are generated automatically.
    ========================================================================= */
 
-// Shared warm-up, used at the top of every day.
+// Shared warm-up. Shown as reference on the Notes tab (not a checkable list).
 const WARMUP = [
   { name: "Arm circles",                 sets: "30 sec each direction" },
   { name: "Band pull-aparts",            sets: "2 x 15" },
