@@ -229,6 +229,7 @@
       viewEl.appendChild(section);
     });
     viewEl.appendChild(el("p", "footnote", "Reference only - nothing here to check off."));
+    viewEl.appendChild(el("p", "footnote", installStatusText()));
   }
 
   function render() {
@@ -251,6 +252,60 @@
   document.addEventListener("visibilitychange", function () {
     if (!document.hidden && state.date !== today()) render();
   });
+
+  /* ---------- install button -------------------------------------------- */
+  /* Chrome hides "Add to Home screen" in different places depending on version,
+     so the app offers its own button. Chrome fires beforeinstallprompt only when
+     it considers the app installable, which also makes this a diagnostic. */
+
+  var deferredPrompt = null;
+  var installBar = null;
+
+  function isInstalled() {
+    return window.matchMedia("(display-mode: standalone)").matches ||
+      window.navigator.standalone === true;
+  }
+
+  function showInstallBar() {
+    if (installBar || isInstalled()) return;
+    installBar = el("div", "install-bar");
+    var btn = el("button", "install-btn", "Install this app on your phone");
+    btn.type = "button";
+    btn.addEventListener("click", function () {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(function (choice) {
+        if (choice.outcome === "accepted") hideInstallBar();
+        deferredPrompt = null;
+      });
+    });
+    installBar.appendChild(btn);
+    document.querySelector(".topbar").appendChild(installBar);
+  }
+
+  function hideInstallBar() {
+    if (installBar && installBar.parentNode) installBar.parentNode.removeChild(installBar);
+    installBar = null;
+  }
+
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault();
+    deferredPrompt = e;
+    showInstallBar();
+  });
+
+  window.addEventListener("appinstalled", function () {
+    deferredPrompt = null;
+    hideInstallBar();
+  });
+
+  // Plain-language status, shown at the bottom of the Notes tab.
+  function installStatusText() {
+    if (isInstalled()) return "Install status: already installed (running as an app).";
+    if (deferredPrompt) return "Install status: ready - use the Install button at the top.";
+    return "Install status: this browser has not offered an install. " +
+      "Chrome on Android should; Firefox and in-app browsers will not.";
+  }
 
   /* ---------- service worker -------------------------------------------- */
 

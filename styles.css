@@ -129,6 +129,26 @@ body {
 
 .tab:active { transform: scale(0.98); }
 
+/* ---------- install prompt ---------- */
+
+.install-bar { padding: 0 16px 12px; }
+
+.install-btn {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #06210f;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.install-btn:active { background: #2bb56d; }
+
 /* ---------- sections ---------- */
 
 main { padding: 4px 12px 0; }
