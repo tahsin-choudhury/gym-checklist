@@ -1,6 +1,6 @@
 # Gym Checklist
 
-A tiny installable PWA: 3-day workout split, tap-to-check rows, daily auto-reset,
+A tiny installable PWA: 4-day upper/lower split, tap-to-check rows, daily auto-reset,
 and a Notes tab holding the warm-up and reference info. No backend, no build step, no dependencies.
 
 ## Files
@@ -59,7 +59,13 @@ serving the cached old version.
 - The "Reset checkmarks" button at the bottom of each day clears **that day only**.
 - Which tab you were on is remembered and is not affected by the daily reset.
 
-## Deploying so you can install it on your Pixel
+## Deploying
+
+The site is live at <https://tahsin-choudhury.github.io/gym-checklist/>, served by
+GitHub Pages from `main`. Deploying a change is just `git push`; the build takes
+about a minute.
+
+## First-time hosting setup (already done)
 
 You need HTTPS. The simplest option is GitHub Pages — no CLI tools, no account
 beyond GitHub, and it stays live for free.

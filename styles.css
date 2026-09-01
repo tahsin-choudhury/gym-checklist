@@ -97,17 +97,14 @@ body {
 
 .tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   padding: 10px 16px 12px;
   background: var(--bg);
-  overflow-x: auto;
-  scrollbar-width: none;
 }
 
-.tabs::-webkit-scrollbar { display: none; }
-
 .tab {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   min-height: 46px;
   padding: 0 16px;
   border: 1px solid var(--border);
