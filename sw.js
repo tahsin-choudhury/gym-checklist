@@ -1,7 +1,7 @@
 /* Service worker: caches the app shell so the app works offline.
    Bump CACHE_VERSION whenever you edit any file below (data.js included)
    so installed copies pick up the change. */
-const CACHE_VERSION = "gym-checklist-v5";
+const CACHE_VERSION = "gym-checklist-v6";
 
 const APP_SHELL = [
   "./",

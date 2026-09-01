@@ -32,6 +32,9 @@ const DAYS = [
         cue: "Chest on 30-45 degree incline bench, row to hips" },
       { name: "Incline Dumbbell Press", sets: "3 x 8-12", rest: "2 min",
         cue: "30 degree incline, no deep stretch", shoulder: true },
+      { name: "Dips", sets: "2-3 x 6-10", rest: "2 min",
+        cue: "Limit depth to ~90 degree elbow bend, lean forward slightly. Stop the set if it pinches",
+        shoulder: true },
       { name: "Lat Pulldown", sets: "3 x 10-12", rest: "90 sec",
         cue: "Pull to upper chest. Sub pull-ups when fresh" },
       { name: "A1: Cable Lateral Raise", sets: "3 x 12-15",
@@ -122,7 +125,7 @@ const NOTES = [
     title: "Shoulder safety",
     list: [
       "Warm up every session, no exceptions.",
-      "No dips.",
+      "Dips: stop at ~90 degree elbow bend, never deeper. Drop them if the cuff flares up.",
       "Press only to a comfortable depth, never a deep stretch.",
       "Pressing elbow angle ~45 degrees from torso, not flared to 90.",
       "Overhead pressing stops at ear level, neutral grip.",
