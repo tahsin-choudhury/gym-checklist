@@ -1,7 +1,7 @@
 /* Service worker: caches the app shell so the app works offline.
    Bump CACHE_VERSION whenever you edit any file below (data.js included)
    so installed copies pick up the change. */
-const CACHE_VERSION = "gym-checklist-v2";
+const CACHE_VERSION = "gym-checklist-v3";
 
 const APP_SHELL = [
   "./",
@@ -16,9 +16,14 @@ const APP_SHELL = [
 ];
 
 self.addEventListener("install", (event) => {
+  // cache: "reload" bypasses the browser HTTP cache, so a version bump always
+  // pulls the freshly deployed files. GitHub Pages serves max-age=600, and
+  // without this the new cache could be filled with up-to-10-minute-old copies.
   event.waitUntil(
     caches.open(CACHE_VERSION)
-      .then((cache) => cache.addAll(APP_SHELL))
+      .then((cache) => cache.addAll(
+        APP_SHELL.map((url) => new Request(url, { cache: "reload" }))
+      ))
       .then(() => self.skipWaiting())
   );
 });
